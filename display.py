@@ -18,9 +18,3 @@ class Output:
         self.window_width, self.window_height = os.get_terminal_size()
         return self.window_height, self.window_width
     
-o = Output()
-o.cls()
-
-print(o.get_window_size())
-o.p(o.window_height, o.window_width, "#")
-input()
