@@ -40,7 +40,7 @@ class Output:
     def draw_pixel(self, x, y, color):
         self.p(x, y, "#", background=color, color=color)
     
-    def draw_square(self, x, y, width, height, color, **kwargs):
+    def draw_square(self, x, y, width, height, color, **kwargs):  #draws square
         if "character" in kwargs.keys():
             character, character_color = kwargs["character"]
         else:
