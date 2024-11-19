@@ -37,7 +37,7 @@ class Output:
         self.window_width, self.window_height = os.get_terminal_size()
         return self.window_height, self.window_width
     
-    def draw_pixel(x, y, color, self):
+    def draw_pixel(self, x, y, color):
         self.p(x, y, "#", background=color, color=color)
     
     def draw_square(self, x, y, width, height, color, **kwargs):
@@ -48,11 +48,11 @@ class Output:
         backround_color = character_color
         for w in range(width):
             for h in range(height):
-                self.p(x+w, y+h, character, color=character_color, backround=character_color)
+                self.p(x+w, y+h, character, color=color, background=color)
 
 o = Output()
 o.cls()
-o.draw_pixel(10, 10, "red")
-o.draw_pixel(11, 10, "red")
+o.draw_square(10, 10, 3, 3, "red")
+input()
     
 
