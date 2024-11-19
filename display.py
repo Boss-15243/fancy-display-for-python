@@ -31,7 +31,7 @@ class Output:
         else:
             background = "\033[40m"
 
-        print(self.reset + color + flash + pos + background + string + self.reset, end="")
+        print(self.reset + color + background + flash + pos + string + self.reset, end="")
     
     def get_window_size(self):
         self.window_width, self.window_height = os.get_terminal_size()
@@ -45,14 +45,9 @@ class Output:
             character, character_color = kwargs["character"]
         else:
             character, character_color = "#", color
-        backround_color = character_color
+        backround_color = color
         for w in range(width):
             for h in range(height):
-                self.p(x+w, y+h, character, color=color, background=color)
+                self.p(x+w, y+h, character, color=character_color, background=backround_color)
 
-o = Output()
-o.cls()
-o.draw_square(10, 10, 3, 3, "red")
-input()
-    
 
