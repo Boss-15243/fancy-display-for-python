@@ -13,7 +13,7 @@ class Output:
     def cls(self):
         print("\033[2J")
     
-    def p(self, x, y, string, **kwargs):
+    def p(self, x, y, string, **kwargs):  #draws a character with position and color
 
         pos = f"\033[{x};{y}H"
         if "color" in kwargs.keys():
@@ -37,7 +37,7 @@ class Output:
         self.window_width, self.window_height = os.get_terminal_size()
         return self.window_height, self.window_width
     
-    def draw_pixel(self, x, y, color):
+    def draw_pixel(self, x, y, color):  #draws solid color pixel
         self.p(x, y, "#", background=color, color=color)
     
     def draw_square(self, x, y, width, height, color, **kwargs):  #draws square
