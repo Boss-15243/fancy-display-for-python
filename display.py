@@ -13,9 +13,10 @@ class Output:
     def cls(self):
         print("\033[2J")
     
-    def p(self, x, y, string, **kwargs):
+    def p(self, x, y, string, **kwargs):  #draws a character with position and color
 
         pos = f"\033[{x};{y}H"
+
         if "color" in kwargs.keys():
             color = "\033[" + str(self.colors[kwargs["color"]]) + "m" 
         else:
@@ -31,28 +32,30 @@ class Output:
         else:
             background = "\033[40m"
 
-        print(self.reset + color + flash + pos + background + string + self.reset, end="")
+        print(self.reset + color + background + flash + pos + string + self.reset, end="")
     
     def get_window_size(self):
         self.window_width, self.window_height = os.get_terminal_size()
         return self.window_height, self.window_width
     
-    def draw_pixel(self, x, y, color):
+    def draw_pixel(self, x, y, color):  #draws solid color pixel
         self.p(x, y, "#", background=color, color=color)
     
-    def draw_square(self, x, y, width, height, color, **kwargs):
+    def draw_square(self, x, y, width, height, color, **kwargs):  #draws square
         if "character" in kwargs.keys():
             character, character_color = kwargs["character"]
         else:
             character, character_color = "#", color
-        backround_color = character_color
+        backround_color = color
         for w in range(width):
             for h in range(height):
-                self.p(x+w, y+h, character, color=color, background=color)
+                self.p(x+w, y+h, character, color=character_color, background=backround_color)
 
-o = Output()
-o.cls()
-o.draw_square(10, 10, 3, 3, "red")
-input()
-    
+if __name__ == "__main__":
+    o = Output()
+    o.cls()
+    o.p(10, 10, "hi")
+    o.draw_pixel(20, 20, "magenta")
+    o.draw_square(40, 40, 10, 10, "yellow")
+    input(">>> ")
 
