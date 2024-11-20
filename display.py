@@ -16,6 +16,7 @@ class Output:
     def p(self, x, y, string, **kwargs):  #draws a character with position and color
 
         pos = f"\033[{x};{y}H"
+
         if "color" in kwargs.keys():
             color = "\033[" + str(self.colors[kwargs["color"]]) + "m" 
         else:
@@ -50,4 +51,11 @@ class Output:
             for h in range(height):
                 self.p(x+w, y+h, character, color=character_color, background=backround_color)
 
+if __name__ == "__main__":
+    o = Output()
+    o.cls()
+    o.p(10, 10, "hi")
+    o.draw_pixel(20, 20, "magenta")
+    o.draw_square(40, 40, 10, 10, "yellow")
+    input(">>> ")
 
