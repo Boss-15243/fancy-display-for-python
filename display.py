@@ -52,7 +52,7 @@ class Output:
         backround_color = color
         for w in range(width):
             for h in range(height):
-                self.p(x+w, y+h, character, color=character_color, background=backround_color)
+                self.p(x+w, y+h, character, color=character_color, background=backround_color) #
 
 if __name__ == "__main__":
     o = Output()
