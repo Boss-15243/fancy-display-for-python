@@ -34,6 +34,9 @@ class Output:
 
         print(self.reset + color + background + flash + pos + string + self.reset, end="")
     
+    def move_cursor(self, x, y):
+        print(f"{self.reset}\033[{x};{y}H{self.reset}")
+    
     def get_window_size(self):
         self.window_width, self.window_height = os.get_terminal_size()
         return self.window_height, self.window_width
