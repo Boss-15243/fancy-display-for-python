@@ -13,7 +13,7 @@ class Output:
     def cls(self):
         print("\033[2J")
     
-    def p(self, x, y, string, **kwargs):  #draws a character with position and color
+    def printxy(self, x, y, string, **kwargs):  #draws a character with position and color
 
         pos = f"\033[{x};{y}H"
 
@@ -52,13 +52,9 @@ class Output:
         backround_color = color
         for w in range(width):
             for h in range(height):
-                self.p(x+w, y+h, character, color=character_color, background=backround_color) #
+                self.p(x+w, y+h, character, color=character_color, background=backround_color) 
+    
 
 if __name__ == "__main__":
-    o = Output()
-    o.cls()
-    o.p(10, 10, "hi")
-    o.draw_pixel(20, 20, "magenta")
-    o.draw_square(40, 40, 10, 10, "yellow")
-    input(">>> ")
+    pass
 
